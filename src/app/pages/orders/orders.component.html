@@ -1,0 +1,14 @@
+<h2 class="text-right font-medium text-2xl mr-5 cursor-pointer text-white mt-4">
+  <a routerLink="../cooks">Cooks</a>
+</h2>
+<h2 class="text-center font-semibold text-4xl text-white mt-4">Orders</h2>
+<div
+  style="grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))"
+  class="grid gap-y-4 gap-x-2 flex-wrap py-5 px-10"
+>
+  <app-order-card
+    class="max-w-[375px] mb-8"
+    *ngFor="let order of orders"
+    [clientOrder]="order"
+  ></app-order-card>
+</div>

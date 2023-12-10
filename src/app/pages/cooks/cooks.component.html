@@ -1,0 +1,36 @@
+<h2 class="text-center font-semibold text-4xl text-white mt-4 mb-4">Cooks</h2>
+
+<div
+  style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))"
+  class="grid gap-y-8 gap-x-4 flex-wrap py-2 px-8"
+>
+  <div
+    class="bg-white px-8 py-4 border border-gray-500 rounded-xl"
+    *ngFor="let cook of cooks"
+  >
+    <p class="text-xl font-medium text-gray-700">
+      Cook id: {{ cook.cookId.replace("Cook_", "") }}
+    </p>
+    <p class="text-xl font-medium text-gray-700">
+      Cook state: {{ cook.cookState | enumToStr }}
+    </p>
+    <div class="mt-2">
+      <button
+        *ngIf="cook.cookState === CookState.ON_BREAK"
+        type="button"
+        (click)="resumeCook(cook.cookId)"
+        class="w-full focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-base px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+      >
+        Resume
+      </button>
+      <button
+        *ngIf="cook.cookState === CookState.COOKING"
+        (click)="stopCook(cook.cookId)"
+        type="button"
+        class="w-full focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+      >
+        Stop
+      </button>
+    </div>
+  </div>
+</div>

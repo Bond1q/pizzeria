@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import {  Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { ApiService } from '../../api-gateway/api.service';
-
 
 @UntilDestroy()
 @Component({
@@ -33,7 +32,8 @@ export class ConfigurationComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) {}
 
   configure() {
@@ -53,7 +53,9 @@ export class ConfigurationComponent {
           randomGenerationStrategy: strategy === 'randomGenerationStrategy',
         })
         .pipe(untilDestroyed(this))
-        .subscribe();
+        .subscribe(() => {
+          this.router.navigateByUrl('orders');
+        });
     }
   }
 }

@@ -15,6 +15,7 @@
     >
       <div>
         <img
+          alt="pizza"
           class="w-24 h-24"
           [src]="'../../../../assets/' + pizzaImg[pizza.pizzaType]"
         />
@@ -24,6 +25,7 @@
         <p>Price: {{ pizza.price }} UAH</p>
         <p>Stage: {{ pizza.pizzaState | enumToStr | uppercase }}</p>
         <p>Started at: {{ pizza.cookingStartTime }}</p>
+        <p>Finished at: {{ pizza.cookingEndTime }}</p>
       </div>
     </div>
   </div>

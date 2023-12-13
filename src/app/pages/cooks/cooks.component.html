@@ -29,12 +29,22 @@
 
 <div
   style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))"
-  class="grid gap-y-8 gap-x-4 flex-wrap py-2 px-8"
+  class="grid gap-y-8 gap-x-4 flex-wrap py-2 px-8 pb-5"
 >
   <div
     class="bg-white px-8 py-4 border border-gray-500 rounded-xl"
     *ngFor="let cook of cooks"
   >
+    <div>
+      <img
+        *ngIf="cook.cookState === CookState.COOKING"
+        src="../../../assets/chef-cooking.png"
+      />
+      <img
+        *ngIf="cook.cookState === CookState.ON_BREAK"
+        src="../../../assets/chef-resting.png"
+      />
+    </div>
     <p class="text-xl font-medium text-gray-700">
       Cook id: {{ cook.cookId.replace("Cook_", "") }}
     </p>
